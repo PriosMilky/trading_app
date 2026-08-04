@@ -4,11 +4,11 @@
         <div>
             <h6 class="text-muted fw-bold mb-1">{{ asset }}</h6>
             <span class="text-muted small">Harga Entry:</span>
-            <h3 class="fw-bold mb-0 text-dark">${{ entry_price }}</h3>
+            <h3 class="fw-bold mb-0 text-dark">{{ entry_price }}</h3>
         </div>
         <div>
             <span class="badge bg-{{ action_color }} fs-3 px-4 py-2 rounded-3">
-                {{ action }}
+                [{{ action }}]
             </span>
         </div>
     </div>
@@ -21,13 +21,13 @@
         <div class="col-6">
             <div class="p-2 rounded bg-white border border-danger border-opacity-50">
                 <small class="fw-bold text-danger d-block">STOP LOSS (SL)</small>
-                <span class="fs-5 fw-bold text-dark">${{ sl }}</span>
+                <span class="fs-5 fw-bold text-dark">{{ sl }}</span>
             </div>
         </div>
         <div class="col-6">
             <div class="p-2 rounded bg-white border border-success border-opacity-50">
                 <small class="fw-bold text-success d-block">TAKE PROFIT (TP)</small>
-                <span class="fs-5 fw-bold text-dark">${{ tp }}</span>
+                <span class="fs-5 fw-bold text-dark">{{ tp }}</span>
             </div>
         </div>
     </div>
@@ -36,26 +36,27 @@
     <div class="mb-3">
         <div class="p-2 rounded bg-success bg-opacity-10 text-success border border-success border-opacity-25 mb-2">
             <small class="fw-bold d-block text-uppercase">Estimasi Keuntungan (TP)</small>
-            <span class="fw-bold fs-6">+{{ pips_tp }} Pips &nbsp;|&nbsp; +${{ profit_usd }} (+{{ profit_cent }} Cent)</span>
+            <span class="fw-bold fs-6">+{{ pips_tp }} Pips &nbsp;|&nbsp; +{{ profit_cent }} Cent</span>
         </div>
 
         <div class="p-2 rounded bg-danger bg-opacity-10 text-danger border border-danger border-opacity-25">
             <small class="fw-bold d-block text-uppercase">Batas Kerugian (SL)</small>
-            <span class="fw-bold fs-6">-{{ pips_sl }} Pips &nbsp;|&nbsp; -${{ loss_usd }} (-{{ loss_cent }} Cent)</span>
+            <span class="fw-bold fs-6">-{{ pips_sl }} Pips &nbsp;|&nbsp; -{{ loss_cent }} Cent</span>
         </div>
     </div>
 
     <p class="text-muted small text-center mb-2">
-        *Estimasi profit/loss dihitung berdasarkan ukuran <strong>{{ lot_size }} Lot Cent</strong>.
+        *Estimasi dihitung berdasarkan ukuran posisi <strong>{{ lot_size }} Lot Cent</strong>.
     </p>
     {% endif %}
 
-    <!-- Footer Info EMA -->
+    <!-- Footer Info Indikator -->
     <div class="border-top pt-2">
-        <p class="small text-muted mb-1"><strong>Ringkasan:</strong> {{ reason }}</p>
+        <p class="small text-muted mb-2"><strong>Ringkasan:</strong> {{ reason }}</p>
         <div class="d-flex justify-content-between small text-secondary">
             <span>EMA 20: <strong>{{ ema20 }}</strong></span>
             <span>EMA 200: <strong>{{ ema200 }}</strong></span>
+            <span>RSI (14): <strong>{{ rsi }}</strong></span>
         </div>
     </div>
 </div>
