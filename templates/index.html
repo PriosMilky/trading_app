@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sinyal Simple Forex & Emas</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- HTMX -->
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+</head>
+<body class="bg-light d-flex align-items-center min-vh-100">
+
+<div class="container py-5" style="max-width: 550px;">
+    <div class="card shadow-lg border-0 rounded-4">
+        <div class="card-body p-4 text-center">
+            
+            <h3 class="fw-bold mb-1">Trading Signal Generator</h3>
+            <p class="text-muted small mb-4">Analisis Instan EMA 20 / EMA 200</p>
+
+            <!-- Form Pilih Aset & Tombol Generate -->
+            <form hx-post="/generate" 
+                  hx-target="#result-area" 
+                  hx-indicator="#loading-spinner">
+                
+                <div class="mb-3 text-start">
+                    <label class="form-label fw-bold">Pilih Aset / Komoditas:</label>
+                    <select name="asset" class="form-select form-select-lg rounded-3">
+                        {% for name in assets.keys() %}
+                            <option value="{{ name }}">{{ name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-lg w-100 rounded-3 fw-bold py-2 mt-2">
+                    ⚡ GENERATE REKOMENDASI
+                </button>
+            </form>
+
+            <!-- Indicator Loading HTMX -->
+            <div id="loading-spinner" class="mt-4 htmx-indicator">
+                <div class="spinner-border text-primary" role="status"></div>
+                <p class="small text-muted mt-2">Menganalisis data pasar...</p>
+            </div>
+
+            <!-- Tempat Hasil Rekomendasi Muncul -->
+            <div id="result-area" class="mt-4"></div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
