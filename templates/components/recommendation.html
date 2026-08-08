@@ -36,17 +36,17 @@
     <div class="mb-3">
         <div class="p-2 rounded bg-success bg-opacity-10 text-success border border-success border-opacity-25 mb-2">
             <small class="fw-bold d-block text-uppercase">Estimasi Keuntungan (TP)</small>
-            <span class="fw-bold fs-6">+{{ pips_tp }} Pips &nbsp;|&nbsp; +{{ profit_cent }} Cent</span>
+            <span class="fw-bold fs-6">+{{ pips_tp }} Pips &nbsp;|&nbsp; +{{ (pips_tp * 0.1)|round(1) }} Cent</span>
         </div>
 
         <div class="p-2 rounded bg-danger bg-opacity-10 text-danger border border-danger border-opacity-25">
             <small class="fw-bold d-block text-uppercase">Batas Kerugian (SL)</small>
-            <span class="fw-bold fs-6">-{{ pips_sl }} Pips &nbsp;|&nbsp; -{{ loss_cent }} Cent</span>
+            <span class="fw-bold fs-6">-{{ pips_sl }} Pips &nbsp;|&nbsp; -{{ (pips_sl * 0.1)|round(1) }} Cent</span>
         </div>
     </div>
 
     <p class="text-muted small text-center mb-2">
-        *Estimasi dihitung berdasarkan ukuran posisi <strong>{{ lot_size }} Lot Cent</strong>.
+        *Estimasi dihitung berdasarkan ukuran posisi <strong>0.01 Lot Cent</strong>.
     </p>
     {% endif %}
 
